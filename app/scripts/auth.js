@@ -14,15 +14,16 @@ Rentals.FacebookAuthenticator = Ember.SimpleAuth.Authenticators.Base.extend({
       FB.getLoginStatus(function(fbResponse) {
         if (fbResponse.status === 'connected') {
           Ember.run(function() {
-            resolve({accessToken: fbResponse.authResponse.accessToken});
+            resolve({accessToken: fbResponse.authResponse.accessToken,
+              userID: fbResponse.authResponse.userID
+            });
           });
-        } else if (fbResponse.status === 'not_authorized') {
-          reject();
         } else {
           FB.login(function(fbResponse) {
             if (fbResponse.authResponse) {
               Ember.run(function() {
-                resolve({accessToken: fbResponse.authResponse.accessToken});
+                resolve({accessToken: fbResponse.authResponse.accessToken,
+                  userID: fbResponse.authResponse.userID});
               });
             } else {
               reject();

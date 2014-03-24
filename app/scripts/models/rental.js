@@ -2,7 +2,10 @@ Rentals.Rental = DS.Model.extend({
   description: DS.attr('string'),
   datePosted: DS.attr('date'),
   dateDue: DS.attr('date'),
-  price: DS.attr('number')
+  price: DS.attr('number'),
+  rentee: DS.belongsTo('renter'),
+  renter: DS.belongsTo('renter')
+
 });
 
 Rentals.Rental.FIXTURES = [

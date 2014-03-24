@@ -29,6 +29,16 @@ FacebookLoader.setup();
 Ember.Application.initializer({
   name: 'authentication',
   initialize: function(container, application) {
+    Ember.SimpleAuth.Session.reopen({
+            account: function() {
+              var user_id = this.get('userID');
+              if (!Ember.isEmpty(user_id)) {
+                return container.lookup('store:main').find('renter', {fb_id: user_id});
+              }
+              console.log('In init: ' + user_id);
+            }.property('userID')
+          });
+
     container.register('authenticators:facebook', Rentals.FacebookAuthenticator);
     Ember.SimpleAuth.setup(container, application);
   }
