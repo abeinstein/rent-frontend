@@ -3,16 +3,19 @@ Rentals.Renter = DS.Model.extend({
   name: DS.attr('string'),
   email: DS.attr('email'),
   pending_rentals: DS.hasMany('rental', {
-    inverse: 'rentee'
+    inverse: 'rentee',
+    async: true
   }),
   owned_rentals: DS.hasMany('rental', {
-    inverse: 'renter'
+    inverse: 'renter',
+    async: true
   })
 });
 
+
 Rentals.Renter.FIXTURES = [
   {
-    id: 1,
+    id: '1084382373',
     fb_id: '1084382373',
     name: 'Andrew Beinstein',
     email: 'andrew.beinstein@gmail.com',
@@ -20,7 +23,7 @@ Rentals.Renter.FIXTURES = [
     owned_rentals: [2]
   }, 
   {
-    id: 2,
+    id: '74534523234',
     fb_id: '74534523234',
     name: 'Adam Gluck',
     email: 'adamt.gluck@gmail.com',
@@ -28,7 +31,7 @@ Rentals.Renter.FIXTURES = [
     owned_rentals: [4]
   },
   {
-    id: 3,
+    id: '74534523234',
     fb_id: '328772342',
     name: 'Mitch Levy',
     email: 'gc2maxpro@gmail.com',

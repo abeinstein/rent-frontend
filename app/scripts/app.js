@@ -31,12 +31,12 @@ Ember.Application.initializer({
   initialize: function(container, application) {
     Ember.SimpleAuth.Session.reopen({
             account: function() {
-              var user_id = this.get('userID');
-              if (!Ember.isEmpty(user_id)) {
-                return container.lookup('store:main').find('renter', {fb_id: user_id});
+              console.log("In initialize session reopen");
+              var accountId = this.get('accountID');
+              if (!Ember.isEmpty(accountId)) {
+                return container.lookup('store:main').find('renter', accountId);
               }
-              console.log('In init: ' + user_id);
-            }.property('userID')
+            }.property('accountId')
           });
 
     container.register('authenticators:facebook', Rentals.FacebookAuthenticator);
@@ -44,7 +44,9 @@ Ember.Application.initializer({
   }
 });
 
-var Rentals = window.Rentals = Ember.Application.create();
+var Rentals = window.Rentals = Ember.Application.create({
+  LOG_TRANSITIONS: true
+});
 
 /* Order and include as you please. */
 require('scripts/controllers/*');

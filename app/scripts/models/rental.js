@@ -3,8 +3,12 @@ Rentals.Rental = DS.Model.extend({
   datePosted: DS.attr('date'),
   dateDue: DS.attr('date'),
   price: DS.attr('number'),
-  rentee: DS.belongsTo('renter'),
-  renter: DS.belongsTo('renter')
+  owner: DS.belongsTo('renter', {
+    inverse: 'owned_rentals'
+  }),
+  renter: DS.belongsTo('renter', {
+    inverse: 'pending_rentals'
+  })
 
 });
 

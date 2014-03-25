@@ -1,0 +1,15 @@
+<h1> {{name}}'s Dashboard </h1>
+<h3> My Items </h3>
+<ul>
+{{#each owned_rentals}}
+<li>{{description}}</li>
+{{/each}}
+</ul>
+<h3> My Rentals </h3>
+<ul>
+{{#each pending_rentals}}
+<li>
+{{description}}
+</li>
+{{/each}}
+</ul>

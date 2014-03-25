@@ -1,6 +1,7 @@
 Rentals.Router.map(function () {
-  this.resource('rentals', { path: '/' });
+  this.resource('rentals');
   this.resource('login');
+  this.resource('dashboard', { path: '/dashboard/:user_id'});
 });
 
 Rentals.ApplicationRoute = Ember.Route.extend(Ember.SimpleAuth.ApplicationRouteMixin, {
@@ -11,9 +12,21 @@ Rentals.ApplicationRoute = Ember.Route.extend(Ember.SimpleAuth.ApplicationRouteM
   }
 });
 
+Rentals.IndexRoute = Ember.Route.extend({
+  beforeModel: function() {
+    this.transitionTo('rentals');
+  }
+});
+
 Rentals.RentalsRoute = Ember.Route.extend({
   model: function() {
     return this.store.find('rental');
+  }
+});
+
+Rentals.DashboardRoute = Ember.Route.extend({
+  model: function(params) {
+    return this.store.find('renter', params.user_id);
   }
 });
 

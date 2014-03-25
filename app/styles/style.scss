@@ -1,7 +1,29 @@
 $icon-font-path: "../styles/fonts/"; // Change the path to the fonts
 @import "bootstrap-sass/lib/bootstrap";
 
+* {
+    font-size: 20px;
+}
+
 /* Put your CSS here */
 html, body {
     margin: 30px 0;
+}
+
+.textbook-form {
+    margin-top: 20px;
+    margin-bottom: 30px;
+
+}
+
+.textbook-input {
+    width: 750px;
+    height: 75px;
+    font-size: 30px;
+}
+
+.price-input {
+    width: 100px;
+    height: 75px;
+    font-size: 30px;
 }

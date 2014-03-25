@@ -11,6 +11,7 @@
         </div>
         <div class="nav navbar-nav navbar-right">
         {{#if session.isAuthenticated}}
+          {{#link-to 'dashboard' session.accountID}}My Dashboard{{/link-to}}
           <a {{ action 'invalidateSession' }} style="cursor: pointer">Logout</a>
         {{else}}
           <img {{ action 'authenticateSession' }} style="cursor: pointer" src="images/active_200.png"/>

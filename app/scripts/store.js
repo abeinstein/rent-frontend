@@ -1,4 +1,9 @@
 Rentals.ApplicationAdapter = DS.FixtureAdapter;
+
+// Rentals.ApplicationAdapter = DS.LSAdapter.extend({
+//   namespace: 'rentals-emberjs'
+// });
+
 // Rentals.RentalAdapter = DS.RESTAdapter.extend({
 //   host: 'http://rent-stuff.herokuapp.com'
 // });
